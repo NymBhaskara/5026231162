@@ -11,6 +11,7 @@ use App\Http\Controllers\SemenController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\PageCounterController;
 use App\Http\Controllers\KeranjangBelanjaController;
+use App\Http\Controllers\NewKaryawanController;
 // import java.io.* ;
 
 /*
@@ -98,3 +99,11 @@ Route::get('/keranjangbelanja/belikeranjangbelanja/{id}', [KeranjangBelanjaContr
 Route::get('/keranjangbelanja/batalkeranjangbelanja/{id}', [KeranjangBelanjaController::class, 'batalkeranjangbelanja']);
 Route::post('/keranjangbelanja/storekeranjangbelanja', [KeranjangBelanjaController::class, 'storekeranjangbelanja']);
 Route::post('/keranjangbelanja/updatekeranjangbelanja', [KeranjangBelanjaController::class, 'updatekeranjangbelanja']);
+
+//route eas
+Route::get('/eas',[NewKaryawanController::class, 'index']);
+Route::get('/eas/tambah',[NewKaryawanController::class, 'tambah']);
+Route::post('/eas/store',[NewKaryawanController::class, 'store']);
+Route::get('/eas/edit/{id}',[NewKaryawanController::class, 'edit']);
+Route::post('/eas/update',[NewKaryawanController::class, 'update']);
+Route::get('/eas/hapus/{id}',[NewKaryawanController::class, 'hapus']);
