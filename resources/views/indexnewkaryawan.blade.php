@@ -25,7 +25,7 @@
 			<td>{{ $nk->pangkat }}</td>
 			<td>{{ number_format($nk->gaji, 0, ',', '.') }}</td>
 			<td>
-				<a href="/eas/hapus/{{ $nk->NIP }}" class="btn btn-danger">Hapus</a>
+				<a href="/eas/hapus/{{ $nk->NIP }}" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus NIP {{ $nk->NIP }}?')">Hapus</a>
 			</td>
 		</tr>
 		@endforeach

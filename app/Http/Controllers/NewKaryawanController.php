@@ -29,15 +29,30 @@ class NewKaryawanController extends Controller
     // method untuk insert data ke table newkaryawan
     public function store(Request $request)
     {
+        $request->validate([
+            'NIP' => 'required|size:9|unique:newkaryawan,NIP',
+            'nama' => 'required|max:50',
+            'pangkat' => 'required|max:15',
+            'gaji' => 'required|integer'
+        ],
+        [
+            'NIP.required' => 'NIP wajib diisi.',
+            'NIP.size' => 'NIP harus terdiri dari 9 karakter.',
+            'NIP.unique' => 'NIP sudah digunakan.',
+            'nama.required' => 'Nama wajib diisi.',
+            'pangkat.required' => 'Pangkat wajib diisi.',
+            'gaji.required' => 'Gaji wajib diisi.',
+            'gaji.integer' => 'Gaji harus berupa angka.'
+        ]);
 	// insert data ke table newkaryawan
-	DB::table('newkaryawan')->insert([
-        'NIP' => $request->NIP,
-		'nama' => $request->nama,
-		'pangkat' => $request->pangkat,
-		'gaji' => $request->gaji
-	]);
+	    DB::table('newkaryawan')->insert([
+            'NIP' => $request->NIP,
+		    'nama' => $request->nama,
+		    'pangkat' => $request->pangkat,
+		    'gaji' => $request->gaji
+	    ]);
 	// alihkan halaman ke halaman eas
-	return redirect('/eas');
+	return redirect('/eas')->with('success', 'Data berhasil ditambahkan');
     }
 
     // update data newkaryawan
