@@ -8,6 +8,9 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PegawaiDBController;
 use App\Http\Controllers\SemenController;
+use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\PageCounterController;
+use App\Http\Controllers\KeranjangBelanjaController;
 // import java.io.* ;
 
 /*
@@ -69,3 +72,29 @@ Route::post('/semen/store',[SemenController::class, 'store']);
 Route::get('/semen/edit/{id}',[SemenController::class, 'edit']);
 Route::post('/semen/update',[SemenController::class, 'update']);
 Route::get('/semen/hapus/{id}',[SemenController::class, 'hapus']);
+
+//route pencari 2
+Route::get('/semen', [SemenController::class, 'index']);
+Route::get('/semen/cari', [SemenController::class, 'cari']);
+
+//route latihan karyawan
+Route::get('/karyawan',[KaryawanController::class, 'index']);
+Route::get('/karyawan/tambah',[KaryawanController::class, 'tambah']);
+Route::post('/karyawan/store',[KaryawanController::class, 'store']);
+Route::get('/karyawan/edit/{id}',[KaryawanController::class, 'edit']);
+Route::post('/karyawan/update',[KaryawanController::class, 'update']);
+Route::get('/karyawan/hapus/{id}',[KaryawanController::class, 'hapus']);
+
+//route pencari karyawan
+Route::get('/karyawan', [KaryawanController::class, 'index']);
+Route::get('/karyawan/cari', [KaryawanController::class, 'cari']);
+
+//route latihan pagecounter
+Route::get('/pagecounter', [PageCounterController::class, 'show']);
+
+//route latihan keranjangbelanja
+Route::get('/keranjangbelanja', [KeranjangBelanjaController::class, 'indexkeranjangbelanja']);
+Route::get('/keranjangbelanja/belikeranjangbelanja/{id}', [KeranjangBelanjaController::class, 'belikeranjangbelanja']);
+Route::get('/keranjangbelanja/batalkeranjangbelanja/{id}', [KeranjangBelanjaController::class, 'batalkeranjangbelanja']);
+Route::post('/keranjangbelanja/storekeranjangbelanja', [KeranjangBelanjaController::class, 'storekeranjangbelanja']);
+Route::post('/keranjangbelanja/updatekeranjangbelanja', [KeranjangBelanjaController::class, 'updatekeranjangbelanja']);
